@@ -1,0 +1,111 @@
+apiVersion: v2
+name: prometheus
+appVersion: v2.54.1
+version: 25.27.0
+type: application
+dependencies:
+  - name: prometheus
+    version: "~25.27.0"
+    repository: https://prometheus-community.github.io/helm-charts
+    condition: prometheus.enabled
+  - name: alertmanager
+    version: "~1.12.0"
+    repository: https://prometheus-community.github.io/helm-charts
+    condition: alertmanager.enabled
+  - name: kube-state-metrics
+    version: "~5.25.0"
+    repository: https://prometheus-community.github.io/helm-charts
+    condition: kube-state-metrics.enabled
+  - name: prometheus-node-exporter
+    version: "~4.39.0"
+    repository: https://prometheus-community.github.io/helm-charts
+    condition: prometheus-node-exporter.enabled
+  - name: prometheus-pushgateway
+    version: "~2.14.0"
+    repository: https://prometheus-community.github.io/helm-charts
+    condition: prometheus-pushgateway.enabled
+  - name: prometheus-redis-exporter
+    version: "~6.5.0"
+    repository: https://prometheus-community.github.io/helm-charts
+    condition: prometheus-redis-exporter.enabled
+  #elasticsearch Multiple Cluster/Exporter
+  - name: prometheus-elasticsearch-exporter
+    version: "~6.5.0"
+    repository: https://prometheus-community.github.io/helm-charts
+    condition: es-chatbot-message.enabled
+    alias: es-chatbot-message
+  - name: prometheus-elasticsearch-exporter
+    version: "~6.5.0"
+    repository: https://prometheus-community.github.io/helm-charts
+    condition: es-chatbot-non-message.enabled
+    alias: es-chatbot-non-message
+  - name: prometheus-elasticsearch-exporter
+    version: "~6.5.0"
+    repository: https://prometheus-community.github.io/helm-charts
+    condition: es-crm.enabled
+    alias: es-crm
+  #kafka
+  - name: prometheus-kafka-exporter
+    version: "~2.11.0"
+    repository: https://prometheus-community.github.io/helm-charts
+    condition: prometheus-kafka-exporter.enabled
+  #postgresql  Multiple Cluster/Exporter
+  - name: prometheus-postgres-exporter
+    version: "~6.4.0"
+    repository: https://prometheus-community.github.io/helm-charts
+    condition: prome-pg-logs.enabled
+    alias: prome-pg-logs
+  - name: prometheus-postgres-exporter
+    version: "~6.4.0"
+    repository: https://prometheus-community.github.io/helm-charts
+    condition: prome-pg-modpanel.enabled
+    alias: prome-pg-modpanel
+  - name: prometheus-postgres-exporter
+    version: "~6.4.0"
+    repository: https://prometheus-community.github.io/helm-charts
+    condition: prome-pg-crm-report.enabled
+    alias: prome-pg-crm-report
+  - name: prometheus-postgres-exporter
+    version: "~6.4.0"
+    repository: https://prometheus-community.github.io/helm-charts
+    condition: prome-pg-reports.enabled
+    alias: prome-pg-reports
+  - name: prometheus-postgres-exporter
+    version: "~6.4.0"
+    repository: https://prometheus-community.github.io/helm-charts
+    condition: prome-pg-crm.enabled
+    alias: prome-pg-crm
+  - name: prometheus-postgres-exporter
+    version: "~6.4.0"
+    repository: https://prometheus-community.github.io/helm-charts
+    condition: prome-pg-chat-logs.enabled
+    alias: prome-pg-chat-logs
+  - name: prometheus-postgres-exporter
+    version: "~6.4.0"
+    repository: https://prometheus-community.github.io/helm-charts
+    condition: prome-pg-chatbot.enabled
+    alias: prome-pg-chatbot
+  - name: prometheus-postgres-exporter
+    version: "~6.4.0"
+    repository: https://prometheus-community.github.io/helm-charts
+    condition: prome-pg-chatbot-log.enabled
+    alias: prome-pg-chatbot-log
+  - name: prometheus-postgres-exporter
+    version: "~6.4.0"
+    repository: https://prometheus-community.github.io/helm-charts
+    condition: prome-pg-chatbot-adapter-log.enabled
+    alias: prome-pg-chatbot-adapter-log
+  - name: prometheus-postgres-exporter
+    version: "~6.4.0"
+    repository: https://prometheus-community.github.io/helm-charts
+    condition: prome-pg-chat-core.enabled
+    alias: prome-pg-chat-core
+  - name: prometheus-postgres-exporter
+    version: "~6.4.0"
+    repository: https://prometheus-community.github.io/helm-charts
+    condition: prome-pg-chatbot-core-billing.enabled
+    alias: prome-pg-chatbot-core-billing
+  - name: grafana
+    version: "8.6.4"  # Use the latest stable version
+    repository: "https://grafana.github.io/helm-charts"
+    condition: grafana.enabled
