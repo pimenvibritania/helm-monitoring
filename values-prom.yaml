@@ -509,7 +509,7 @@ server:
 
     ## Prometheus server data Persistent Volume size
     ##
-    size: 8Gi
+    size: 20Gi
 
     ## Prometheus server data Persistent Volume Storage Class
     ## If defined, storageClassName: <storageClass>
@@ -818,6 +818,11 @@ serverFiles:
           - targets:
             - localhost:9090
 
+      # - job_name: "vm-node-exporter"
+      #   static_configs:
+      #     - targets:
+      #       - "10.194.179.218:9100"  # REDIS infomedia
+            
       # A scrape configuration for running Prometheus on a Kubernetes cluster.
       # This uses separate scrape configs for cluster components (i.e. API server, node)
       # and services to allow each to use different authentication configs.
@@ -1331,6 +1336,8 @@ prometheus-node-exporter:
   containerSecurityContext:
     allowPrivilegeEscalation: false
 
+  service:
+    port: 9101
 ## prometheus-pushgateway sub-chart configurable values
 ## Please see https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-pushgateway
 ##
